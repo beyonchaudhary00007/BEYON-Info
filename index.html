@@ -4,105 +4,289 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BEYON info@</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    min-height:100vh;padding:30px 15px
+    min-height:100vh;
+    padding:30px 15px;
 }
+
 .card{
-    width:100%;max-width:450px;margin:auto;background:#fff;
-    border-radius:25px;padding:35px 25px;text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,.35)
+    width:100%;
+    max-width:450px;
+    margin:auto;
+    background:#fff;
+    border-radius:25px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
 }
+
 .logo{
-    width:90px;height:90px;border-radius:50%;
+    width:90px;
+    height:90px;
+    border-radius:50%;
     background:linear-gradient(135deg,#203a43,#2c5364);
-    color:#fff;display:flex;justify-content:center;align-items:center;
-    font-size:36px;font-weight:bold;margin:auto
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:36px;
+    font-weight:bold;
+    margin:auto;
 }
-h1{margin-top:18px;font-size:30px;color:#203a43}
-.subtitle{margin-top:8px;color:#666;font-size:15px}
-.main-qr{margin-top:30px;padding:20px;background:#f7f7f7;border-radius:18px}
-.main-title{font-size:19px;font-weight:bold;color:#203a43;margin-bottom:8px}
-.main-description,.scan-text{font-size:13px;color:#777}
-.main-description{margin-bottom:15px}
-.main-qr img{width:210px;height:210px;display:block;margin:auto;border-radius:12px}
-.buttons{margin-top:30px}
-.social-box{margin-bottom:35px;padding-bottom:30px;border-bottom:1px solid #eee}
-.social-box:last-child{border-bottom:none}
+
+h1{
+    margin-top:18px;
+    font-size:30px;
+    color:#203a43;
+}
+
+.subtitle{
+    margin-top:8px;
+    color:#666;
+    font-size:15px;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+.social-box{
+    margin-bottom:35px;
+    padding-bottom:30px;
+    border-bottom:1px solid #eee;
+}
+
+.social-box:last-child{
+    border-bottom:none;
+}
+
 .button{
-    display:block;text-decoration:none;color:#fff;font-weight:bold;
-    padding:15px;margin:12px 0;border-radius:12px;
-    transition:transform .3s,opacity .3s
+    display:block;
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
+    padding:15px;
+    margin:12px 0;
+    border-radius:12px;
+    transition:transform .3s,opacity .3s;
 }
-.button:hover{transform:translateY(-3px);opacity:.9}
-.whatsapp-nepal{background:#25D366}
-.whatsapp-japan{background:#128C7E}
-.instagram{background:#E1306C}
-.facebook{background:#1877F2}
-.line{background:#06C755}
-.qr-title{font-size:16px;font-weight:bold;color:#333;margin-top:15px}
+
+.button:hover{
+    transform:translateY(-3px);
+    opacity:.9;
+}
+
+.whatsapp-nepal{
+    background:#25D366;
+}
+
+.whatsapp-japan{
+    background:#128C7E;
+}
+
+.instagram{
+    background:#E1306C;
+}
+
+.facebook{
+    background:#1877F2;
+}
+
+.line{
+    background:#06C755;
+}
+
+.qr-title{
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+    margin-top:15px;
+}
+
 .qr{
-    width:160px;height:160px;display:block;margin:12px auto;
-    padding:5px;background:#fff;border:1px solid #ddd;border-radius:10px
+    width:160px;
+    height:160px;
+    display:block;
+    margin:12px auto;
+    padding:5px;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:10px;
 }
-.footer{margin-top:20px;color:#777;font-size:14px}
+
+.scan-text{
+    font-size:13px;
+    color:#777;
+}
+
+.footer{
+    margin-top:20px;
+    color:#777;
+    font-size:14px;
+}
 </style>
 </head>
+
 <body>
+
 <div class="card">
 
-<div class="logo">B</div>
-<h1>BEYON info@</h1>
-<p class="subtitle">Scan one QR • Choose any app</p>
+    <div class="logo">B</div>
 
-<div class="main-qr">
-<p class="main-description">Scan this QR to open BEYON info@</p>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=https%3A%2F%2Fbeyonchaudhary00007.github.io%2FBeyon-info%2F" alt="BEYON Main QR">
+    <h1>BEYON info@</h1>
+
+    <p class="subtitle">
+        Scan one QR • Choose any app
+    </p>
+
+    <div class="buttons">
+
+        <!-- WhatsApp Nepal -->
+        <div class="social-box">
+
+            <a
+                class="button whatsapp-nepal"
+                href="https://wa.me/9779804793919"
+                target="_blank">
+                🇳🇵 WhatsApp Nepal
+            </a>
+
+            <div class="qr-title">
+                🇳🇵 WhatsApp Nepal QR
+            </div>
+
+            <img
+                class="qr"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F9779804793919"
+                alt="WhatsApp Nepal QR">
+
+            <p class="scan-text">
+                Scan to open WhatsApp Nepal
+            </p>
+
+        </div>
+
+
+        <!-- WhatsApp Japan -->
+        <div class="social-box">
+
+            <a
+                class="button whatsapp-japan"
+                href="https://wa.me/819060532059"
+                target="_blank">
+                🇯🇵 WhatsApp Japan
+            </a>
+
+            <div class="qr-title">
+                🇯🇵 WhatsApp Japan QR
+            </div>
+
+            <img
+                class="qr"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F819060532059"
+                alt="WhatsApp Japan QR">
+
+            <p class="scan-text">
+                Scan to open WhatsApp Japan
+            </p>
+
+        </div>
+
+
+        <!-- Instagram -->
+        <div class="social-box">
+
+            <a
+                class="button instagram"
+                href="https://www.instagram.com/chaudharybeyon/"
+                target="_blank">
+                📷 Instagram
+            </a>
+
+            <div class="qr-title">
+                📷 Instagram QR
+            </div>
+
+            <img
+                class="qr"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwww.instagram.com%2Fchaudharybeyon%2F"
+                alt="Instagram QR">
+
+            <p class="scan-text">
+                Scan to open Instagram
+            </p>
+
+        </div>
+
+
+        <!-- Facebook -->
+        <div class="social-box">
+
+            <a
+                class="button facebook"
+                href="https://www.facebook.com/share/1HUbwNtuWu/?mibextid=wwXIfr"
+                target="_blank">
+                👍 Facebook
+            </a>
+
+            <div class="qr-title">
+                👍 Facebook QR
+            </div>
+
+            <img
+                class="qr"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1HUbwNtuWu%2F%3Fmibextid%3DwwXIfr"
+                alt="Facebook QR">
+
+            <p class="scan-text">
+                Scan to open Facebook
+            </p>
+
+        </div>
+
+
+        <!-- LINE -->
+        <div class="social-box">
+
+            <a
+                class="button line"
+                href="https://line.me/ti/p/REkdRzt5rH"
+                target="_blank">
+                💬 LINE
+            </a>
+
+            <div class="qr-title">
+                💬 LINE QR
+            </div>
+
+            <img
+                class="qr"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fline.me%2Fti%2Fp%2FREkdRzt5rH"
+                alt="LINE QR">
+
+            <p class="scan-text">
+                Scan to open LINE
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Thank you for connecting! ❤️
+    </div>
+
 </div>
 
-<div class="buttons">
-
-<div class="social-box">
-<a class="button whatsapp-nepal" href="https://wa.me/9779804793919" target="_blank">🇳🇵 WhatsApp Nepal</a>
-<div class="qr-title">🇳🇵 WhatsApp Nepal QR</div>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F9779804793919" alt="WhatsApp Nepal QR">
-<p class="scan-text">Scan to open WhatsApp Nepal</p>
-</div>
-
-<div class="social-box">
-<a class="button whatsapp-japan" href="https://wa.me/819060532059" target="_blank">🇯🇵 WhatsApp Japan</a>
-<div class="qr-title">🇯🇵 WhatsApp Japan QR</div>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F819060532059" alt="WhatsApp Japan QR">
-<p class="scan-text">Scan to open WhatsApp Japan</p>
-</div>
-
-<div class="social-box">
-<a class="button instagram" href="https://www.instagram.com/chaudharybeyon/" target="_blank">📷 Instagram</a>
-<div class="qr-title">📷 Instagram QR</div>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwww.instagram.com%2Fchaudharybeyon%2F" alt="Instagram QR">
-<p class="scan-text">Scan to open Instagram</p>
-</div>
-
-<div class="social-box">
-<a class="button facebook" href="https://www.facebook.com/share/1HUbwNtuWu/?mibextid=wwXIfr" target="_blank">👍 Facebook</a>
-<div class="qr-title">👍 Facebook QR</div>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1HUbwNtuWu%2F%3Fmibextid%3DwwXIfr" alt="Facebook QR">
-<p class="scan-text">Scan to open Facebook</p>
-</div>
-
-<div class="social-box">
-<a class="button line" href="https://line.me/ti/p/REkdRzt5rH" target="_blank">💬 LINE</a>
-<div class="qr-title">💬 LINE QR</div>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fline.me%2Fti%2Fp%2FREkdRzt5rH" alt="LINE QR">
-<p class="scan-text">Scan to open LINE</p>
-</div>
-
-</div>
-
-<div class="footer">Thank you for connecting! ❤️</div>
-</div>
 </body>
 </html>
