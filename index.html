@@ -1,292 +1,1369 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BEYON info@</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BEYON info@</title>
+
+    <!-- GoatCounter Analytics -->
+    <script
+        data-goatcounter="https://beyoninfo.goatcounter.com/count"
+        async
+        src="//gc.zgo.at/count.js">
+    </script>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
     min-height:100vh;
-    padding:30px 15px;
+    color:white;
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(0,220,255,.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(150,50,255,.25),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #020817,
+            #07172d,
+            #02040b
+        );
 }
 
-.card{
-    width:100%;
-    max-width:450px;
-    margin:auto;
-    background:#fff;
-    border-radius:25px;
-    padding:35px 25px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,.35);
-}
 
-.logo{
-    width:90px;
-    height:90px;
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+
+    width:320px;
+    height:320px;
+
     border-radius:50%;
-    background:linear-gradient(135deg,#203a43,#2c5364);
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:36px;
-    font-weight:bold;
-    margin:auto;
+    filter:blur(90px);
+    opacity:.35;
+
+    z-index:-2;
+
+    animation:
+        floatingLight
+        10s
+        ease-in-out
+        infinite
+        alternate;
 }
+
+body::before{
+    background:#00d9ff;
+    left:-140px;
+    top:15%;
+}
+
+body::after{
+    background:#8d35ff;
+    right:-140px;
+    bottom:10%;
+    animation-delay:3s;
+}
+
+@keyframes floatingLight{
+
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:
+            translate(60px,-50px)
+            scale(1.15);
+    }
+}
+
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.page{
+    width:min(100%,1000px);
+    margin:auto;
+
+    background:rgba(2,9,25,.62);
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.55);
+
+    animation:
+        pageAppear
+        1s
+        ease;
+}
+
+@keyframes pageAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    min-height:510px;
+    overflow:hidden;
+}
+
+
+/* =========================
+   COVER PHOTO
+
+   CHANGE: cover.jpg
+========================= */
+
+.cover{
+
+    position:absolute;
+
+    inset:0 0 70px 0;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.08) 40%,
+            #020817 100%
+        ),
+
+        url("cover.jpg")
+        center
+        center
+        /
+        cover
+        no-repeat;
+
+    animation:
+        coverZoom
+        14s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+@keyframes coverZoom{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.08);
+    }
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+
+    position:absolute;
+
+    top:20px;
+    left:20px;
+    right:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:3;
+}
+
+.brand{
+
+    padding:11px 16px;
+
+    border-radius:999px;
+
+    background:
+        rgba(3,12,30,.65);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    backdrop-filter:
+        blur(14px);
+
+    font-weight:bold;
+
+    letter-spacing:.5px;
+}
+
+
+/* =========================
+   PROFILE PHOTO
+
+   CHANGE: profile.jpg
+========================= */
+
+.profile-wrap{
+
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+
+    transform:translateX(-50%);
+
+    width:185px;
+    height:185px;
+
+    padding:7px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00eaff,
+            #8d5cff,
+            #ff4fd8,
+            #00eaff
+        );
+
+    background-size:300% 300%;
+
+    animation:
+        ringMove 5s ease infinite,
+        profileFloat 4s ease-in-out infinite;
+
+    box-shadow:
+        0 0 45px
+        rgba(0,220,255,.55),
+        0 0 80px
+        rgba(160,70,255,.25);
+}
+
+@keyframes ringMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+@keyframes profileFloat{
+
+    0%,100%{
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateX(-50%)
+            translateY(-9px);
+    }
+}
+
+.profile{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:
+        5px solid
+        #061024;
+
+    background:white;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    padding:0 25px 35px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
 
 h1{
-    margin-top:18px;
-    font-size:30px;
-    color:#203a43;
+
+    text-align:center;
+
+    font-size:
+        clamp(38px,7vw,68px);
+
+    line-height:1;
+
+    letter-spacing:-2px;
+
+    margin-bottom:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d9ff,
+            #8b6cff,
+            white,
+            #00d9ff
+        );
+
+    background-size:250% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        titleShine
+        5s
+        linear
+        infinite;
+}
+
+@keyframes titleShine{
+
+    to{
+        background-position:250% center;
+    }
+}
+
+.namaste{
+
+    text-align:center;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    margin:10px 0 7px;
 }
 
 .subtitle{
-    margin-top:8px;
-    color:#666;
-    font-size:15px;
+
+    text-align:center;
+
+    color:#9fb1c9;
+
+    margin-bottom:25px;
 }
 
-.buttons{
-    margin-top:30px;
+
+/* =========================
+   EMAIL
+========================= */
+
+.email-box{
+
+    margin-bottom:15px;
+
+    padding:18px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(80,40,255,.25),
+            rgba(0,180,255,.12)
+        );
+
+    border:
+        1px solid
+        rgba(150,100,255,.5);
+
+    transition:.3s;
 }
+
+.email-box:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(90,60,255,.25);
+}
+
+.email-box a{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:16px;
+
+    font-weight:bold;
+}
+
+.email-icon{
+    font-size:27px;
+}
+
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+
+.links{
+    display:grid;
+    gap:14px;
+}
+
+
+/* =========================
+   APP CARD
+========================= */
 
 .social-box{
-    margin-bottom:35px;
-    padding-bottom:30px;
-    border-bottom:1px solid #eee;
-}
 
-.social-box:last-child{
-    border-bottom:none;
-}
+    display:grid;
 
-.button{
-    display:block;
-    text-decoration:none;
-    color:#fff;
-    font-weight:bold;
+    grid-template-columns:
+        80px
+        1fr
+        110px;
+
+    align-items:center;
+
+    gap:18px;
+
     padding:15px;
-    margin:12px 0;
-    border-radius:12px;
-    transition:transform .3s,opacity .3s;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.22);
+
+    cursor:pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    animation:
+        cardAppear
+        .7s
+        forwards;
 }
 
-.button:hover{
-    transform:translateY(-3px);
-    opacity:.9;
+.social-box:nth-child(1){
+    animation-delay:.1s;
 }
 
-.whatsapp-nepal{
-    background:#25D366;
+.social-box:nth-child(2){
+    animation-delay:.2s;
 }
 
-.whatsapp-japan{
-    background:#128C7E;
+.social-box:nth-child(3){
+    animation-delay:.3s;
+}
+
+.social-box:nth-child(4){
+    animation-delay:.4s;
+}
+
+.social-box:nth-child(5){
+    animation-delay:.5s;
+}
+
+@keyframes cardAppear{
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+.social-box:hover{
+
+    transform:
+        translateY(-6px)
+        scale(1.015);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,.35),
+        0 0 25px
+        rgba(100,180,255,.15);
+}
+
+
+/* =========================
+   TOUCH EFFECT
+========================= */
+
+.social-box:active{
+    transform:scale(.96);
+}
+
+
+/* =========================
+   CLICK BOUNCE ANIMATION
+========================= */
+
+.social-box.clicked{
+
+    animation:
+        appClick
+        .55s
+        ease;
+}
+
+@keyframes appClick{
+
+    0%{
+        transform:scale(1);
+    }
+
+    35%{
+        transform:scale(.94);
+    }
+
+    70%{
+        transform:scale(1.04);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+
+/* =========================
+   APP ICON
+========================= */
+
+.app-icon{
+
+    width:70px;
+    height:70px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:20px;
+
+    font-size:34px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(255,255,255,.1);
+}
+
+
+/* =========================
+   APP TEXT
+========================= */
+
+.app-name{
+
+    font-size:19px;
+
+    font-weight:800;
+
+    margin-bottom:4px;
+}
+
+.app-description{
+
+    color:#a6b9d0;
+
+    font-size:13px;
+}
+
+
+/* =========================
+   OPEN BUTTON
+========================= */
+
+.open{
+
+    display:block;
+
+    position:relative;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:bold;
+
+    padding:13px 10px;
+
+    border-radius:15px;
+
+    background:var(--app);
+
+    transition:.3s;
+}
+
+.open:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+}
+
+
+/* BUTTON SHINE */
+
+.open::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+    left:-60%;
+
+    width:45%;
+    height:200%;
+
+    background:
+        rgba(255,255,255,.35);
+
+    transform:
+        rotate(25deg);
+}
+
+.open:active::after{
+
+    animation:
+        buttonShine
+        .6s
+        ease;
+}
+
+@keyframes buttonShine{
+
+    from{
+        left:-60%;
+    }
+
+    to{
+        left:130%;
+    }
+}
+
+
+/* =========================
+   APP COLORS
+========================= */
+
+.nepal{
+    --app:#20d96b;
+}
+
+.japan{
+    --app:#12cda4;
 }
 
 .instagram{
-    background:#E1306C;
+    --app:#d62b83;
 }
 
 .facebook{
-    background:#1877F2;
+    --app:#1877f2;
 }
 
 .line{
-    background:#06C755;
+    --app:#06c755;
 }
 
-.qr-title{
-    font-size:16px;
+
+/* =========================
+   SHARE BUTTON
+========================= */
+
+.share-button{
+
+    width:100%;
+
+    margin:25px 0 10px;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:18px;
+
+    color:white;
+
+    font-size:18px;
+
     font-weight:bold;
-    color:#333;
-    margin-top:15px;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6a5cff,
+            #b23cff,
+            #ff4fa3
+        );
+
+    box-shadow:
+        0 8px 30px
+        rgba(140,70,255,.35);
+
+    transition:.3s;
+
+    animation:
+        sharePulse
+        3s
+        ease-in-out
+        infinite;
 }
 
-.qr{
-    width:160px;
-    height:160px;
-    display:block;
-    margin:12px auto;
-    padding:5px;
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:10px;
+.share-button:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
 }
 
-.scan-text{
-    font-size:13px;
-    color:#777;
+.share-button:active{
+    transform:scale(.96);
 }
+
+@keyframes sharePulse{
+
+    0%,100%{
+
+        box-shadow:
+            0 8px 30px
+            rgba(140,70,255,.35);
+    }
+
+    50%{
+
+        box-shadow:
+            0 8px 45px
+            rgba(255,70,180,.55);
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
-    margin-top:20px;
-    color:#777;
-    font-size:14px;
+
+    text-align:center;
+
+    margin-top:25px;
+
+    padding:25px 10px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color:#8ea1ba;
 }
+
+.heart{
+
+    display:inline-block;
+
+    color:#ff4f9a;
+
+    animation:
+        heartbeat
+        1.2s
+        infinite;
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.3);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    body{
+        padding:0 6px 20px;
+    }
+
+    .hero{
+        min-height:430px;
+    }
+
+    .profile-wrap{
+        width:145px;
+        height:145px;
+    }
+
+    .content{
+        padding:0 12px 25px;
+    }
+
+    .social-box{
+
+        grid-template-columns:
+            65px
+            1fr;
+
+        gap:12px;
+    }
+
+    .app-icon{
+
+        width:60px;
+        height:60px;
+
+        font-size:28px;
+
+        border-radius:16px;
+    }
+
+    .app-name{
+        font-size:17px;
+    }
+
+    .open{
+        grid-column:1 / -1;
+    }
+
+    h1{
+        font-size:39px;
+    }
+
+    .topbar{
+
+        left:12px;
+        right:12px;
+    }
+
+    .email-box a{
+        font-size:14px;
+    }
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<div class="card">
 
-    <div class="logo">B</div>
-
-    <h1>BEYON info@</h1>
-
-    <p class="subtitle">
-        Scan one QR • Choose any app
-    </p>
-
-    <div class="buttons">
-
-        <!-- WhatsApp Nepal -->
-        <div class="social-box">
-
-            <a
-                class="button whatsapp-nepal"
-                href="https://wa.me/9779804793919"
-                target="_blank">
-                🇳🇵 WhatsApp Nepal
-            </a>
-
-            <div class="qr-title">
-                🇳🇵 WhatsApp Nepal QR
-            </div>
-
-            <img
-                class="qr"
-                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F9779804793919"
-                alt="WhatsApp Nepal QR">
-
-            <p class="scan-text">
-                Scan to open WhatsApp Nepal
-            </p>
-
-        </div>
+<div class="page">
 
 
-        <!-- WhatsApp Japan -->
-        <div class="social-box">
+<!-- HERO -->
 
-            <a
-                class="button whatsapp-japan"
-                href="https://wa.me/819060532059"
-                target="_blank">
-                🇯🇵 WhatsApp Japan
-            </a>
+<section class="hero">
 
-            <div class="qr-title">
-                🇯🇵 WhatsApp Japan QR
-            </div>
+    <div class="cover"></div>
 
-            <img
-                class="qr"
-                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F819060532059"
-                alt="WhatsApp Japan QR">
+    <div class="topbar">
 
-            <p class="scan-text">
-                Scan to open WhatsApp Japan
-            </p>
-
-        </div>
-
-
-        <!-- Instagram -->
-        <div class="social-box">
-
-            <a
-                class="button instagram"
-                href="https://www.instagram.com/chaudharybeyon/"
-                target="_blank">
-                📷 Instagram
-            </a>
-
-            <div class="qr-title">
-                📷 Instagram QR
-            </div>
-
-            <img
-                class="qr"
-                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwww.instagram.com%2Fchaudharybeyon%2F"
-                alt="Instagram QR">
-
-            <p class="scan-text">
-                Scan to open Instagram
-            </p>
-
-        </div>
-
-
-        <!-- Facebook -->
-        <div class="social-box">
-
-            <a
-                class="button facebook"
-                href="https://www.facebook.com/share/1HUbwNtuWu/?mibextid=wwXIfr"
-                target="_blank">
-                👍 Facebook
-            </a>
-
-            <div class="qr-title">
-                👍 Facebook QR
-            </div>
-
-            <img
-                class="qr"
-                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1HUbwNtuWu%2F%3Fmibextid%3DwwXIfr"
-                alt="Facebook QR">
-
-            <p class="scan-text">
-                Scan to open Facebook
-            </p>
-
-        </div>
-
-
-        <!-- LINE -->
-        <div class="social-box">
-
-            <a
-                class="button line"
-                href="https://line.me/ti/p/REkdRzt5rH"
-                target="_blank">
-                💬 LINE
-            </a>
-
-            <div class="qr-title">
-                💬 LINE QR
-            </div>
-
-            <img
-                class="qr"
-                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fline.me%2Fti%2Fp%2FREkdRzt5rH"
-                alt="LINE QR">
-
-            <p class="scan-text">
-                Scan to open LINE
-            </p>
-
+        <div class="brand">
+            ✨ BEYON info@
         </div>
 
     </div>
 
-    <div class="footer">
-        Thank you for connecting! ❤️
+
+    <!-- PROFILE PHOTO -->
+
+    <div class="profile-wrap">
+
+        <img
+            src="profile.jpg"
+            class="profile"
+            alt="Profile photo"
+        >
+
     </div>
+
+</section>
+
+
+
+<!-- MAIN CONTENT -->
+
+<section class="content">
+
+
+<h1>BEYON info@</h1>
+
+
+<div class="namaste">
+    Namaste 🙏
+</div>
+
+
+<p class="subtitle">
+    Connect • Follow • Stay in Touch
+</p>
+
+
+
+<!-- EMAIL -->
+
+<div class="email-box">
+
+    <a
+        href="mailto:beyonchaudhary00007@gmail.com"
+        data-goatcounter-click="Email"
+    >
+
+        <span class="email-icon">
+            ✉️
+        </span>
+
+        beyonchaudhary00007@gmail.com
+
+    </a>
 
 </div>
 
+
+
+<!-- SOCIAL APPS -->
+
+<div class="links">
+
+
+<!-- WHATSAPP NEPAL -->
+
+<div class="social-box nepal">
+
+    <div class="app-icon">💬</div>
+
+    <div>
+
+        <div class="app-name">
+            WhatsApp Nepal 🇳🇵
+        </div>
+
+        <div class="app-description">
+            Chat on WhatsApp Nepal
+        </div>
+
+    </div>
+
+    <a
+        class="open"
+        href="https://wa.me/9779804793919"
+        target="_blank"
+        rel="noopener"
+        data-goatcounter-click="WhatsApp Nepal"
+    >
+        Open →
+    </a>
+
+</div>
+
+
+
+<!-- WHATSAPP JAPAN -->
+
+<div class="social-box japan">
+
+    <div class="app-icon">💬</div>
+
+    <div>
+
+        <div class="app-name">
+            WhatsApp Japan 🇯🇵
+        </div>
+
+        <div class="app-description">
+            Chat on WhatsApp Japan
+        </div>
+
+    </div>
+
+    <a
+        class="open"
+        href="https://wa.me/819060532059"
+        target="_blank"
+        rel="noopener"
+        data-goatcounter-click="WhatsApp Japan"
+    >
+        Open →
+    </a>
+
+</div>
+
+
+
+<!-- INSTAGRAM -->
+
+<div class="social-box instagram">
+
+    <div class="app-icon">📷</div>
+
+    <div>
+
+        <div class="app-name">
+            Instagram
+        </div>
+
+        <div class="app-description">
+            Follow me on Instagram
+        </div>
+
+    </div>
+
+    <a
+        class="open"
+        href="https://www.instagram.com/chaudharybeyon/"
+        target="_blank"
+        rel="noopener"
+        data-goatcounter-click="Instagram"
+    >
+        Open →
+    </a>
+
+</div>
+
+
+
+<!-- FACEBOOK -->
+
+<div class="social-box facebook">
+
+    <div class="app-icon">👍</div>
+
+    <div>
+
+        <div class="app-name">
+            Facebook
+        </div>
+
+        <div class="app-description">
+            Connect on Facebook
+        </div>
+
+    </div>
+
+    <a
+        class="open"
+        href="https://www.facebook.com/share/1HUbwNtuWu/?mibextid=wwXIfr"
+        target="_blank"
+        rel="noopener"
+        data-goatcounter-click="Facebook"
+    >
+        Open →
+    </a>
+
+</div>
+
+
+
+<!-- LINE -->
+
+<div class="social-box line">
+
+    <div class="app-icon">💚</div>
+
+    <div>
+
+        <div class="app-name">
+            LINE
+        </div>
+
+        <div class="app-description">
+            Chat with me on LINE
+        </div>
+
+    </div>
+
+    <a
+        class="open"
+        href="https://line.me/ti/p/REkdRzt5rH"
+        target="_blank"
+        rel="noopener"
+        data-goatcounter-click="LINE"
+    >
+        Open →
+    </a>
+
+</div>
+
+
+</div>
+
+
+
+<!-- SHARE BUTTON -->
+
+<button
+    class="share-button"
+    onclick="sharePage()"
+    data-goatcounter-click="Share Page"
+>
+    ↗️ Share This Page
+</button>
+
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    Thank you for connecting!
+
+    <span class="heart">❤️</span>
+
+    <br><br>
+
+    <small>
+        © 2026 • All Rights Reserved
+    </small>
+
+</div>
+
+
+</section>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+/* =========================
+   SHARE FUNCTION
+========================= */
+
+const PAGE_URL =
+"https://beyonchaudhary00007.github.io/BEYON-Info/";
+
+
+function sharePage(){
+
+    const shareData = {
+
+        title:
+        "Connect With Me",
+
+        text:
+        "Check this page!",
+
+        url:
+        PAGE_URL
+
+    };
+
+
+    if(navigator.share){
+
+        navigator.share(shareData)
+
+        .catch(function(){
+
+            /* User cancelled */
+
+        });
+
+    }
+
+    else if(navigator.clipboard){
+
+        navigator.clipboard
+
+        .writeText(PAGE_URL)
+
+        .then(function(){
+
+            alert(
+                "Link copied! 📋\n\nNow you can share it anywhere."
+            );
+
+        });
+
+    }
+
+    else{
+
+        prompt(
+            "Copy this link:",
+            PAGE_URL
+        );
+
+    }
+
+}
+
+
+
+/* =========================
+   APP TOUCH ANIMATION
+========================= */
+
+document
+.querySelectorAll(".social-box")
+.forEach(function(card){
+
+    card.addEventListener(
+        "click",
+        function(){
+
+            /* Remove old animation */
+
+            card.classList.remove(
+                "clicked"
+            );
+
+
+            /* Restart animation */
+
+            void card.offsetWidth;
+
+
+            /* Start animation */
+
+            card.classList.add(
+                "clicked"
+            );
+
+        }
+    );
+
+});
+
+
+</script>
+
+
 </body>
+
 </html>
