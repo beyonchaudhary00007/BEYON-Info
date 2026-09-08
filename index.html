@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BEYON info@</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -22,200 +17,102 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
     min-height:100vh;
-    color:#fff;
     overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#fff;
     background:#020817;
 }
 
-
-/* =========================================================
-   MOUNTAIN BACKGROUND
-========================================================= */
+/* ================= BACKGROUND ================= */
 
 .background{
     position:fixed;
     inset:-2%;
-    z-index:-5;
+    z-index:-10;
 
     background:
-    linear-gradient(
-        to bottom,
-        rgba(2,8,23,.02),
-        rgba(2,8,23,.16) 48%,
-        rgba(2,8,23,.38) 100%
-    ),
-    url("./cover.jpg");
+        linear-gradient(
+            to bottom,
+            rgba(2,8,23,.02),
+            rgba(2,8,23,.10) 45%,
+            rgba(2,8,23,.28) 100%
+        ),
+        url("./cover.jpg");
 
     background-size:cover;
     background-position:center;
 
-    animation:coverAnimation 20s ease-in-out infinite alternate;
-
-    will-change:transform;
+    animation:coverMove 20s ease-in-out infinite alternate;
 }
 
-@keyframes coverAnimation{
-
+@keyframes coverMove{
     0%{
-        transform:scale(1.02)
-        translate3d(0,0,0);
+        transform:scale(1.02);
     }
-
-    50%{
-        transform:scale(1.05)
-        translate3d(-.4%,-.3%,0);
-    }
-
     100%{
-        transform:scale(1.08)
-        translate3d(.5%,.5%,0);
+        transform:scale(1.07);
     }
-
 }
 
-.background::after{
-
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(
-        circle at 12% 20%,
-        rgba(0,210,255,.12),
-        transparent 25%
-    ),
-
-    radial-gradient(
-        circle at 88% 24%,
-        rgba(210,70,255,.12),
-        transparent 27%
-    ),
-
-    linear-gradient(
-        to bottom,
-        transparent 55%,
-        rgba(0,0,0,.18)
-    );
-
-    animation:coverGlow 10s ease-in-out infinite alternate;
-
-    pointer-events:none;
-}
-
-@keyframes coverGlow{
-
-    from{
-        opacity:.65;
-        transform:scale(1);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1.035);
-    }
-
-}
-
-
-/* =========================================================
-   FLOATING LIGHTS
-========================================================= */
+/* ================= LIGHTS ================= */
 
 .light{
-
     position:fixed;
-
-    width:10px;
-    height:10px;
-
+    width:8px;
+    height:8px;
     border-radius:50%;
-
     z-index:-2;
-
     pointer-events:none;
-
-    animation:floatingLight 6s ease-in-out infinite;
+    animation:floatLight 7s ease-in-out infinite;
 }
 
 .light.one{
-
-    left:8%;
+    left:10%;
     top:25%;
-
     background:#00eaff;
-
-    box-shadow:
-    0 0 15px #00eaff,
-    0 0 40px #00eaff;
+    box-shadow:0 0 15px #00eaff,0 0 35px #00eaff;
 }
 
 .light.two{
-
     right:12%;
-    top:15%;
-
-    background:#d65cff;
-
-    box-shadow:
-    0 0 15px #d65cff,
-    0 0 40px #d65cff;
-
+    top:18%;
+    background:#d94cff;
+    box-shadow:0 0 15px #d94cff,0 0 35px #d94cff;
     animation-delay:2s;
 }
 
 .light.three{
-
-    right:7%;
-    bottom:20%;
-
-    background:#00ff91;
-
-    box-shadow:
-    0 0 15px #00ff91,
-    0 0 40px #00ff91;
-
+    right:8%;
+    bottom:22%;
+    background:#00ff9d;
+    box-shadow:0 0 15px #00ff9d,0 0 35px #00ff9d;
     animation-delay:4s;
 }
 
-@keyframes floatingLight{
-
+@keyframes floatLight{
     0%,100%{
-        transform:translateY(0) scale(1);
+        transform:translateY(0);
+        opacity:.4;
     }
-
     50%{
-        transform:translateY(-30px) scale(1.45);
+        transform:translateY(-35px);
+        opacity:1;
     }
-
 }
 
-
-/* =========================================================
-   PARTICLES
-========================================================= */
+/* ================= PARTICLES ================= */
 
 .particle{
-
     position:fixed;
-
-    width:4px;
-    height:4px;
-
+    width:3px;
+    height:3px;
     border-radius:50%;
-
-    background:#fff;
-
+    background:white;
     opacity:.5;
-
-    pointer-events:none;
-
     z-index:-1;
-
-    animation:particleFloat 8s linear infinite;
+    pointer-events:none;
+    animation:particleMove 8s linear infinite;
 }
 
 .p1{
@@ -235,116 +132,81 @@ body{
     animation-delay:4s;
 }
 
-@keyframes particleFloat{
-
+@keyframes particleMove{
     0%{
-        transform:translateY(0) scale(.7);
+        transform:translateY(0);
         opacity:.1;
     }
-
     50%{
         opacity:.7;
     }
-
     100%{
-        transform:translateY(-120px) scale(1.3);
+        transform:translateY(-120px);
         opacity:0;
     }
-
 }
 
-
-/* =========================================================
-   PAGE
-========================================================= */
+/* ================= PAGE ================= */
 
 .page{
-
     width:100%;
-
     min-height:100vh;
 
-    padding:28px 8px 35px;
-
     display:flex;
+    justify-content:center;
+    align-items:flex-start;
 
-    flex-direction:column;
-
-    align-items:center;
+    padding:20px 7px 30px;
 }
 
-
-/* =========================================================
-   MAIN CARD
-========================================================= */
+/* ================= MAIN CARD ================= */
 
 .card{
-
-    width:100%;
-
-    max-width:400px;
-
     position:relative;
 
-    padding:105px 10px 25px;
+    width:100%;
+    max-width:380px;
 
-    border-radius:38px 38px 30px 30px;
+    padding:104px 9px 25px;
 
-    background:
-    linear-gradient(
-        180deg,
-        rgba(2,16,52,.34),
-        rgba(2,8,31,.48)
-    );
+    border-radius:32px;
 
-    border:
-    1px solid rgba(65,150,255,.38);
+    /* transparent so mountain remains visible */
+    background:rgba(2,12,35,.16);
 
-    backdrop-filter:blur(4px);
+    border:1px solid rgba(100,160,255,.22);
 
-    -webkit-backdrop-filter:blur(4px);
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
 
     box-shadow:
-    0 25px 70px rgba(0,0,0,.48),
-    0 0 35px rgba(30,100,255,.13);
+        0 20px 60px rgba(0,0,0,.28),
+        0 0 30px rgba(50,100,255,.08);
 
-    animation:
-    cardAppear 1s
-    cubic-bezier(.2,.8,.2,1);
+    animation:cardIn .9s ease;
 }
 
-@keyframes cardAppear{
-
+@keyframes cardIn{
     from{
         opacity:0;
-        transform:
-        translateY(30px)
-        scale(.98);
+        transform:translateY(25px);
     }
-
     to{
         opacity:1;
-        transform:
-        translateY(0)
-        scale(1);
+        transform:translateY(0);
     }
-
 }
 
-
-/* =========================================================
-   PROFILE PHOTO
-========================================================= */
+/* ================= PROFILE ================= */
 
 .profile-ring{
-
     position:absolute;
 
-    width:104px;
-    height:104px;
+    width:100px;
+    height:100px;
 
+    top:12px;
     left:50%;
-    top:13px;
 
     transform:translateX(-50%);
 
@@ -353,606 +215,409 @@ body{
     border-radius:50%;
 
     background:
-    linear-gradient(
-        135deg,
-        #00eaff,
-        #236cff,
-        #8b4dff,
-        #ff21df,
-        #00eaff
-    );
+        linear-gradient(
+            135deg,
+            #00eaff,
+            #2370ff,
+            #914cff,
+            #ff25d9,
+            #00eaff
+        );
 
     background-size:300% 300%;
 
     animation:
-    profileGlow 5s ease-in-out infinite,
-    profileFloat 4s ease-in-out infinite;
+        ringColor 5s linear infinite,
+        profileFloat 4s ease-in-out infinite;
 
     box-shadow:
-    0 0 20px rgba(0,220,255,.85),
-    0 0 45px rgba(160,80,255,.55);
+        0 0 18px rgba(0,230,255,.8),
+        0 0 42px rgba(160,70,255,.5);
 
     z-index:5;
 }
 
 .profile-ring::before{
-
     content:"";
 
     position:absolute;
-
     inset:-7px;
 
     border-radius:50%;
 
-    border:
-    1px solid rgba(255,255,255,.45);
+    border:1px solid rgba(255,255,255,.4);
 
-    animation:
-    rotateRing 8s linear infinite;
+    animation:rotate 8s linear infinite;
 }
 
 .profile-ring::after{
-
     content:"";
 
     position:absolute;
-
     inset:-12px;
 
     border-radius:50%;
 
-    border:
-    1px dashed rgba(100,220,255,.32);
+    border:1px dashed rgba(70,220,255,.3);
 
-    animation:
-    rotateRingReverse 12s linear infinite;
-}
-
-@keyframes profileGlow{
-
-    0%{
-        background-position:0 50%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    100%{
-        background-position:0 50%;
-    }
-
-}
-
-@keyframes profileFloat{
-
-    0%,100%{
-        transform:
-        translateX(-50%)
-        translateY(0);
-    }
-
-    50%{
-        transform:
-        translateX(-50%)
-        translateY(-5px);
-    }
-
-}
-
-@keyframes rotateRing{
-
-    from{
-        transform:rotate(0);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-
-}
-
-@keyframes rotateRingReverse{
-
-    from{
-        transform:rotate(360deg);
-    }
-
-    to{
-        transform:rotate(0);
-    }
-
+    animation:rotateReverse 12s linear infinite;
 }
 
 .profile{
-
     display:block;
 
     width:100%;
     height:100%;
 
     object-fit:cover;
-
     object-position:center;
 
     border-radius:50%;
 
-    border:
-    4px solid #071126;
-
-    position:relative;
-
-    z-index:2;
+    border:4px solid #071126;
 
     opacity:1;
-
     visibility:visible;
-
-    transition:
-    transform .4s ease;
 }
 
-.profile-ring:hover .profile{
-
-    transform:scale(1.04);
-
+@keyframes ringColor{
+    0%{
+        background-position:0% 50%;
+    }
+    50%{
+        background-position:100% 50%;
+    }
+    100%{
+        background-position:0% 50%;
+    }
 }
 
+@keyframes profileFloat{
+    0%,100%{
+        transform:translateX(-50%) translateY(0);
+    }
+    50%{
+        transform:translateX(-50%) translateY(-5px);
+    }
+}
 
-/* =========================================================
-   TITLE
-========================================================= */
+@keyframes rotate{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes rotateReverse{
+    from{
+        transform:rotate(360deg);
+    }
+    to{
+        transform:rotate(0deg);
+    }
+}
+
+/* ================= TITLE ================= */
 
 h1{
-
     text-align:center;
 
-    font-size:32px;
-
+    font-size:31px;
     line-height:1.05;
 
     letter-spacing:-1.5px;
 
     background:
-    linear-gradient(
-        90deg,
-        #00eaff,
-        #24d9ff,
-        #9b62ff,
-        #ff36d7
-    );
+        linear-gradient(
+            90deg,
+            #00eaff,
+            #258cff,
+            #9b55ff,
+            #ff31d4
+        );
 
     background-size:300%;
 
     -webkit-background-clip:text;
-
     background-clip:text;
 
     color:transparent;
 
-    animation:
-    titleMove 6s linear infinite;
+    animation:titleMove 6s linear infinite;
 }
 
 @keyframes titleMove{
-
     0%{
         background-position:0%;
     }
-
     100%{
         background-position:300%;
     }
-
 }
 
-
-/* =========================================================
-   NAMASTE
-========================================================= */
+/* ================= NAMASTE ================= */
 
 .namaste{
-
     text-align:center;
 
     font-size:20px;
-
     font-weight:bold;
 
     margin:5px 0 3px;
-
-    animation:
-    namasteFloat 3s ease-in-out infinite;
 }
 
-@keyframes namasteFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-3px);
-    }
-
-}
-
-
-/* =========================================================
-   SUBTITLE
-========================================================= */
+/* ================= SUBTITLE ================= */
 
 .subtitle{
-
     text-align:center;
 
-    color:#c5d5ee;
+    color:#d0ddf4;
 
-    font-size:13px;
+    font-size:12.5px;
 
     margin-bottom:12px;
-
-    animation:
-    subtitleAppear 1.2s ease;
 }
 
-@keyframes subtitleAppear{
-
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-
-/* =========================================================
-   EMAIL
-========================================================= */
+/* ================= EMAIL ================= */
 
 .email{
-
-    position:relative;
-
-    overflow:hidden;
+    width:100%;
+    min-height:42px;
 
     display:flex;
-
     align-items:center;
 
     gap:10px;
 
-    width:100%;
+    padding:6px 9px;
 
-    min-height:43px;
+    margin-bottom:8px;
 
-    padding:7px 9px;
-
-    margin-bottom:7px;
-
-    border-radius:13px;
+    border-radius:12px;
 
     text-decoration:none;
+    color:white;
 
-    color:#fff;
+    background:rgba(20,40,100,.28);
 
-    background:
-    linear-gradient(
-        90deg,
-        rgba(84,50,255,.43),
-        rgba(0,91,210,.31)
-    );
+    border:1px solid rgba(80,150,255,.35);
 
-    border:
-    1px solid rgba(62,140,255,.55);
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
 
-    box-shadow:
-    0 0 12px rgba(20,100,255,.13);
-
-    transition:
-    transform .3s ease,
-    box-shadow .3s ease;
+    transition:.3s ease;
 }
 
 .email:hover{
-
     transform:translateY(-2px);
-
-    box-shadow:
-    0 0 20px rgba(40,130,255,.25);
+    box-shadow:0 0 18px rgba(50,130,255,.25);
 }
 
 .email-icon{
+    width:33px;
+    height:33px;
 
-    width:34px;
-    height:34px;
-
-    flex:0 0 34px;
+    flex:0 0 33px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     border-radius:9px;
 
     background:
-    linear-gradient(
-        135deg,
-        #7047ff,
-        #a126ff
-    );
+        linear-gradient(
+            135deg,
+            #7145ff,
+            #bd26ff
+        );
 
-    font-size:18px;
-
-    box-shadow:
-    0 0 14px rgba(128,60,255,.45);
+    font-size:17px;
 }
 
 .email-text{
-
-    font-size:11px;
-
+    font-size:10.5px;
     font-weight:600;
 
-    white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
+    white-space:nowrap;
 }
 
-
 /* =========================================================
-   SOCIAL LINKS
+   LINKS
+   NO BACKGROUND
+   NO EXTRA LINK PANEL
 ========================================================= */
 
 .links{
-
     display:grid;
 
-    gap:6px;
+    gap:7px;
+
+    padding:0;
+
+    margin:0;
+
+    background:transparent;
+
+    border:none;
 }
 
+/* =========================================================
+   SOCIAL ROW
+   COMPLETELY TRANSPARENT
+========================================================= */
+
 .social-box{
+    width:100%;
 
     display:grid;
 
-    grid-template-columns:
-    42px
-    1fr
-    64px;
+    grid-template-columns:40px minmax(0,1fr) 62px;
 
     align-items:center;
 
-    gap:8px;
+    gap:7px;
 
-    min-height:44px;
+    min-height:43px;
 
-    padding:5px 7px;
+    padding:4px 0;
 
-    border-radius:12px;
+    /* REMOVE LINK BACKGROUND */
+    background:transparent;
 
-    border:
-    1px solid rgba(45,151,255,.48);
+    /* REMOVE LINK BORDER */
+    border:none;
 
-    background:
-    linear-gradient(
-        90deg,
-        rgba(3,22,68,.58),
-        rgba(2,16,55,.43)
-    );
+    /* REMOVE LINK SHADOW */
+    box-shadow:none;
 
-    backdrop-filter:blur(4px);
-
-    -webkit-backdrop-filter:blur(4px);
+    /* REMOVE BLUR */
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
 
     position:relative;
 
-    overflow:hidden;
+    overflow:visible;
 
     cursor:pointer;
 
     opacity:0;
 
-    transform:
-    translateY(15px)
-    scale(.98);
+    transform:translateY(10px);
 
-    animation:
-    appAppear .65s
-    cubic-bezier(.2,.8,.2,1)
-    forwards;
+    animation:linkIn .6s ease forwards;
 
     transition:
-    transform .3s ease,
-    box-shadow .3s ease,
-    border-color .3s ease,
-    background .3s ease;
+        transform .3s ease;
 }
 
 .social-box:nth-child(1){
-    animation-delay:.08s;
+    animation-delay:.05s;
 }
 
 .social-box:nth-child(2){
-    animation-delay:.16s;
+    animation-delay:.12s;
 }
 
 .social-box:nth-child(3){
-    animation-delay:.24s;
+    animation-delay:.19s;
 }
 
 .social-box:nth-child(4){
-    animation-delay:.32s;
+    animation-delay:.26s;
 }
 
 .social-box:nth-child(5){
-    animation-delay:.40s;
+    animation-delay:.33s;
 }
 
-@keyframes appAppear{
-
+@keyframes linkIn{
     to{
-
         opacity:1;
-
-        transform:
-        translateY(0)
-        scale(1);
+        transform:translateY(0);
     }
-
-}
-
-.social-box::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-    linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.06),
-        transparent
-    );
-
-    transform:translateX(-100%);
-
-    transition:
-    transform .7s ease;
-}
-
-.social-box:hover::before{
-
-    transform:translateX(100%);
 }
 
 .social-box:hover{
-
-    transform:translateY(-2px);
-
-    border-color:
-    rgba(70,175,255,.75);
-
-    box-shadow:
-    0 0 20px rgba(20,110,255,.18);
+    transform:translateX(3px);
 }
 
-.social-box.clicked{
-
-    animation:
-    clickPulse .35s ease;
-}
-
-@keyframes clickPulse{
-
-    50%{
-        transform:scale(.97);
-    }
-
-}
-
-
-/* =========================================================
-   APP ICON
-========================================================= */
+/* ================= ICONS ================= */
 
 .icon{
+    width:37px;
+    height:37px;
 
-    width:38px;
-    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     border-radius:10px;
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:20px;
+    font-size:19px;
 
     background:
-    linear-gradient(
-        135deg,
-        var(--c1,#00cfff),
-        var(--c2,#075cff)
-    );
+        linear-gradient(
+            135deg,
+            var(--c1),
+            var(--c2)
+        );
 
     box-shadow:
-    0 0 15px
-    color-mix(
-        in srgb,
-        var(--c1,#00cfff) 45%,
-        transparent
-    );
+        0 0 15px
+        color-mix(
+            in srgb,
+            var(--c1) 45%,
+            transparent
+        );
 
     transition:
-    transform .3s ease;
+        transform .3s ease;
+}
+
+.social-box:hover .icon{
+    transform:scale(1.07) rotate(-4deg);
 }
 
 .whatsapp-nepal{
-
     --c1:#00e676;
-    --c2:#05bd5c;
+    --c2:#00b957;
 }
 
 .whatsapp-japan{
-
-    --c1:#18d9c3;
-    --c2:#0bb89d;
+    --c1:#16d9bf;
+    --c2:#0aaf96;
 }
 
 .instagram{
-
-    --c1:#ff2f92;
+    --c1:#ff2c91;
     --c2:#ff7043;
 }
 
 .facebook{
-
-    --c1:#1688ff;
-    --c2:#0759db;
+    --c1:#1988ff;
+    --c2:#0758d5;
 }
 
 .line{
-
-    --c1:#23df43;
-    --c2:#08b83a;
+    --c1:#27df45;
+    --c2:#08b939;
 }
 
-.social-box:hover .icon{
-
-    transform:
-    rotate(-5deg)
-    scale(1.06);
-}
-
-
-/* =========================================================
-   APP TEXT
-========================================================= */
+/* ================= APP TEXT ================= */
 
 .app-name{
-
     font-size:11px;
 
     font-weight:bold;
 
-    margin-bottom:1px;
-
     line-height:1.15;
+
+    margin-bottom:1px;
 
     white-space:nowrap;
 
@@ -962,10 +627,9 @@ h1{
 }
 
 .app-text{
-
     font-size:8.5px;
 
-    color:#aebfe0;
+    color:#d0dcf0;
 
     line-height:1.15;
 
@@ -976,67 +640,54 @@ h1{
     text-overflow:ellipsis;
 }
 
-
-/* =========================================================
-   OPEN BUTTON
-========================================================= */
+/* ================= OPEN BUTTON ================= */
 
 .open{
-
-    width:64px;
+    width:62px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
-    padding:7px 4px;
+    padding:6px 4px;
 
-    border-radius:12px;
+    border-radius:11px;
+
+    color:white;
 
     text-decoration:none;
 
-    color:#fff;
-
-    font-size:10px;
-
+    font-size:9.5px;
     font-weight:bold;
 
     background:
-    linear-gradient(
-        135deg,
-        var(--c1,#1688ff),
-        var(--c2,#0759db)
-    );
+        linear-gradient(
+            135deg,
+            var(--c1),
+            var(--c2)
+        );
 
     box-shadow:
-    0 0 14px
-    color-mix(
-        in srgb,
-        var(--c1,#1688ff) 30%,
-        transparent
-    );
+        0 0 13px
+        color-mix(
+            in srgb,
+            var(--c1) 30%,
+            transparent
+        );
 
     transition:
-    transform .25s ease,
-    filter .25s ease;
+        transform .25s ease,
+        filter .25s ease;
 }
 
 .open:hover{
-
-    transform:scale(1.04);
-
-    filter:brightness(1.08);
+    transform:scale(1.05);
+    filter:brightness(1.12);
 }
 
-
-/* =========================================================
-   SHARE BUTTON
-========================================================= */
+/* ================= SHARE ================= */
 
 .share{
-
     width:100%;
 
     margin-top:12px;
@@ -1045,65 +696,53 @@ h1{
 
     border:0;
 
-    border-radius:16px;
+    border-radius:15px;
 
-    color:#fff;
+    color:white;
 
     font-size:13px;
-
     font-weight:bold;
 
     cursor:pointer;
 
     background:
-    linear-gradient(
-        90deg,
-        #27d8ff,
-        #8a2cff,
-        #ff16c7,
-        #ff9954
-    );
+        linear-gradient(
+            90deg,
+            #20d9ff,
+            #7144ff,
+            #ef27d3,
+            #ff914d
+        );
 
-    background-size:220% 100%;
+    background-size:250% 100%;
 
     box-shadow:
-    0 0 22px rgba(100,60,255,.35);
+        0 0 22px rgba(100,70,255,.4);
 
-    animation:
-    shareGradient 5s linear infinite;
+    animation:shareMove 5s linear infinite;
 
-    transition:
-    transform .3s ease,
-    box-shadow .3s ease;
+    transition:.3s ease;
 }
 
 .share:hover{
-
     transform:translateY(-2px);
 
     box-shadow:
-    0 0 28px rgba(120,80,255,.55);
+        0 0 30px rgba(120,80,255,.6);
 }
 
-@keyframes shareGradient{
-
+@keyframes shareMove{
     0%{
         background-position:0% 0%;
     }
-
     100%{
-        background-position:220% 0%;
+        background-position:250% 0%;
     }
-
 }
 
-
-/* =========================================================
-   SHARE STATUS
-========================================================= */
+/* ================= STATUS ================= */
 
 .share-status{
-
     min-height:0;
 
     margin-top:5px;
@@ -1112,39 +751,28 @@ h1{
 
     font-size:9px;
 
-    color:#c9d7ef;
+    color:#d4e0f4;
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/* ================= FOOTER ================= */
 
 .footer{
-
     text-align:center;
 
     margin-top:9px;
 
-    padding-bottom:2px;
-
-    color:#b6c7e2;
-
     font-size:10px;
 
-    line-height:1.4;
+    color:#d0dcf0;
 }
 
 .heart{
-
     display:inline-block;
 
-    animation:
-    heartBeat 1.6s ease-in-out infinite;
+    animation:heart 1.5s ease-in-out infinite;
 }
 
-@keyframes heartBeat{
-
+@keyframes heart{
     0%,100%{
         transform:scale(1);
     }
@@ -1152,619 +780,416 @@ h1{
     50%{
         transform:scale(1.18);
     }
-
 }
 
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
-@media(min-width:700px){
-
-    .page{
-
-        padding-top:45px;
-
-        padding-bottom:45px;
-    }
-
-    .card{
-
-        max-width:410px;
-
-        padding-left:12px;
-
-        padding-right:12px;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
+/* ================= SMALL MOBILE ================= */
 
 @media(max-width:420px){
 
     .page{
-
-        padding:
-        18px 6px 28px;
+        padding:18px 6px 28px;
     }
 
     .card{
-
         max-width:380px;
 
         padding:
-        103px 8px 23px;
+            103px 8px 24px;
 
-        border-radius:
-        32px 32px 26px 26px;
-    }
-
-    h1{
-
-        font-size:30px;
+        background:rgba(2,12,35,.12);
     }
 
     .profile-ring{
-
         width:98px;
-
         height:98px;
+        top:11px;
+    }
 
-        top:12px;
+    h1{
+        font-size:30px;
     }
 
     .social-box{
-
         grid-template-columns:
-        40px
-        1fr
-        62px;
+            39px
+            minmax(0,1fr)
+            60px;
 
         gap:7px;
+
+        min-height:42px;
     }
 
     .icon{
-
         width:36px;
-
         height:36px;
+        font-size:18px;
     }
 
     .open{
-
-        width:62px;
+        width:60px;
+        font-size:9px;
     }
 
-    .email-text{
-
+    .app-name{
         font-size:10.5px;
     }
 
+    .app-text{
+        font-size:8px;
+    }
 }
 
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
+/* ================= VERY SMALL ================= */
 
 @media(max-width:350px){
 
+    .page{
+        padding-left:4px;
+        padding-right:4px;
+    }
+
     .card{
-
         padding-left:6px;
-
         padding-right:6px;
     }
 
     .social-box{
-
         grid-template-columns:
-        37px
-        1fr
-        58px;
+            36px
+            minmax(0,1fr)
+            57px;
 
         gap:6px;
     }
 
     .icon{
-
         width:34px;
-
         height:34px;
-
-        font-size:18px;
     }
 
     .open{
-
-        width:58px;
-
-        font-size:9px;
+        width:57px;
+        font-size:8.5px;
     }
 
     .app-name{
-
         font-size:10px;
     }
 
     .app-text{
-
-        font-size:8px;
+        font-size:7.5px;
     }
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =======================================================
-     MOUNTAIN COVER
-======================================================= -->
-
+<!-- BACKGROUND -->
 <div class="background"></div>
 
-
-<!-- =======================================================
-     FLOATING LIGHTS
-======================================================= -->
-
+<!-- FLOATING LIGHTS -->
 <div class="light one"></div>
-
 <div class="light two"></div>
-
 <div class="light three"></div>
 
-
-<!-- =======================================================
-     PARTICLES
-======================================================= -->
-
+<!-- PARTICLES -->
 <div class="particle p1"></div>
-
 <div class="particle p2"></div>
-
 <div class="particle p3"></div>
 
 
-<!-- =======================================================
-     PAGE
-======================================================= -->
-
 <div class="page">
-
-
-<!-- =======================================================
-     MAIN CARD
-======================================================= -->
 
 <div class="card">
 
-
-<!-- =======================================================
-     PROFILE PHOTO
-======================================================= -->
-
+<!-- PROFILE -->
 <div class="profile-ring">
 
     <img
         src="./profile.png"
         class="profile"
-        alt="BEYON Profile Photo">
+        alt="BEYON Profile Photo"
+    >
 
 </div>
 
 
-<!-- =======================================================
-     TITLE
-======================================================= -->
-
-<h1>
-
-    BEYON info@
-
-</h1>
-
+<!-- TITLE -->
+<h1>BEYON info@</h1>
 
 <div class="namaste">
-
     Namaste 🙏
+</div>
 
+<div class="subtitle">
+    Connect • Follow • Stay in Touch
 </div>
 
 
-<p class="subtitle">
-
-    Connect • Follow • Stay in Touch
-
-</p>
-
-
-<!-- =======================================================
-     EMAIL
-======================================================= -->
-
+<!-- EMAIL -->
 <a
     class="email"
     href="mailto:beyonchaudhary00007@gmail.com"
 >
 
     <div class="email-icon">
-
         ✉️
-
     </div>
 
-
     <div class="email-text">
-
         beyonchaudhary00007@gmail.com
-
     </div>
 
 </a>
 
 
-<!-- =======================================================
-     APP LINKS
-======================================================= -->
-
+<!-- SOCIAL LINKS -->
 <div class="links">
 
 
-<!-- =====================================================
-     WHATSAPP NEPAL
-===================================================== -->
+    <!-- WHATSAPP NEPAL -->
+    <div class="social-box whatsapp-nepal">
 
-<div class="social-box whatsapp-nepal">
+        <div class="icon">
+            💬
+        </div>
 
-    <div class="icon">
+        <div>
 
-        💬
+            <div class="app-name">
+                WhatsApp Nepal 🇳🇵
+            </div>
+
+            <div class="app-text">
+                Chat on WhatsApp Nepal
+            </div>
+
+        </div>
+
+        <a
+            class="open"
+            href="https://wa.me/9779804793919"
+            target="_blank"
+            rel="noopener"
+        >
+            Open →
+        </a>
 
     </div>
 
 
-    <div>
+    <!-- WHATSAPP JAPAN -->
+    <div class="social-box whatsapp-japan">
 
-        <div class="app-name">
+        <div class="icon">
+            💬
+        </div>
 
-            WhatsApp Nepal 🇳🇵
+        <div>
+
+            <div class="app-name">
+                WhatsApp Japan 🇯🇵
+            </div>
+
+            <div class="app-text">
+                Chat on WhatsApp Japan
+            </div>
 
         </div>
 
-
-        <div class="app-text">
-
-            Chat on WhatsApp Nepal
-
-        </div>
+        <a
+            class="open"
+            href="https://wa.me/819060532059"
+            target="_blank"
+            rel="noopener"
+        >
+            Open →
+        </a>
 
     </div>
 
 
-    <a
-        class="open"
-        href="https://wa.me/9779804793919"
-        target="_blank"
-        rel="noopener"
-    >
+    <!-- INSTAGRAM -->
+    <div class="social-box instagram">
 
-        Open →
+        <div class="icon">
+            📷
+        </div>
 
-    </a>
+        <div>
 
-</div>
+            <div class="app-name">
+                Instagram
+            </div>
 
+            <div class="app-text">
+                Follow me on Instagram
+            </div>
 
-<!-- =====================================================
-     WHATSAPP JAPAN
-===================================================== -->
+        </div>
 
-<div class="social-box whatsapp-japan">
-
-    <div class="icon">
-
-        💬
+        <a
+            class="open"
+            href="https://www.instagram.com/chaudharybeyon/"
+            target="_blank"
+            rel="noopener"
+        >
+            Open →
+        </a>
 
     </div>
 
 
-    <div>
+    <!-- FACEBOOK -->
+    <div class="social-box facebook">
 
-        <div class="app-name">
+        <div class="icon">
+            👍
+        </div>
 
-            WhatsApp Japan 🇯🇵
+        <div>
+
+            <div class="app-name">
+                Facebook
+            </div>
+
+            <div class="app-text">
+                Connect on Facebook
+            </div>
 
         </div>
 
-
-        <div class="app-text">
-
-            Chat on WhatsApp Japan
-
-        </div>
+        <a
+            class="open"
+            href="https://www.facebook.com/share/1HUbwNtuWu/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener"
+        >
+            Open →
+        </a>
 
     </div>
 
 
-    <a
-        class="open"
-        href="https://wa.me/819060532059"
-        target="_blank"
-        rel="noopener"
-    >
+    <!-- LINE -->
+    <div class="social-box line">
 
-        Open →
+        <div class="icon">
+            💚
+        </div>
 
-    </a>
+        <div>
 
-</div>
+            <div class="app-name">
+                LINE
+            </div>
 
-
-<!-- =====================================================
-     INSTAGRAM
-===================================================== -->
-
-<div class="social-box instagram">
-
-    <div class="icon">
-
-        📷
-
-    </div>
-
-
-    <div>
-
-        <div class="app-name">
-
-            Instagram
+            <div class="app-text">
+                Chat with me on LINE
+            </div>
 
         </div>
 
-
-        <div class="app-text">
-
-            Follow me on Instagram
-
-        </div>
-
-    </div>
-
-
-    <a
-        class="open"
-        href="https://www.instagram.com/chaudharybeyon/"
-        target="_blank"
-        rel="noopener"
-    >
-
-        Open →
-
-    </a>
-
-</div>
-
-
-<!-- =====================================================
-     FACEBOOK
-===================================================== -->
-
-<div class="social-box facebook">
-
-    <div class="icon">
-
-        👍
+        <a
+            class="open"
+            href="https://line.me/ti/p/REkdRzt5rH"
+            target="_blank"
+            rel="noopener"
+        >
+            Open →
+        </a>
 
     </div>
-
-
-    <div>
-
-        <div class="app-name">
-
-            Facebook
-
-        </div>
-
-
-        <div class="app-text">
-
-            Connect on Facebook
-
-        </div>
-
-    </div>
-
-
-    <a
-        class="open"
-        href="https://www.facebook.com/share/1HUbwNtuWu/?mibextid=wwXIfr"
-        target="_blank"
-        rel="noopener"
-    >
-
-        Open →
-
-    </a>
-
-</div>
-
-
-<!-- =====================================================
-     LINE
-===================================================== -->
-
-<div class="social-box line">
-
-    <div class="icon">
-
-        💚
-
-    </div>
-
-
-    <div>
-
-        <div class="app-name">
-
-            LINE
-
-        </div>
-
-
-        <div class="app-text">
-
-            Chat with me on LINE
-
-        </div>
-
-    </div>
-
-
-    <a
-        class="open"
-        href="https://line.me/ti/p/REkdRzt5rH"
-        target="_blank"
-        rel="noopener"
-    >
-
-        Open →
-
-    </a>
-
-</div>
 
 
 </div>
 
 
-<!-- =======================================================
-     SHARE
-======================================================= -->
-
+<!-- SHARE -->
 <button
     class="share"
     id="shareButton"
     type="button"
 >
-
     ↗ Share This Page
-
 </button>
 
-
-<p
+<div
     class="share-status"
     id="shareStatus"
-></p>
+></div>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
+<!-- FOOTER -->
 <div class="footer">
-
     Thank you for connecting!
-
-    <span class="heart">
-
-        ❤️
-
-    </span>
-
+    <span class="heart">❤️</span>
 </div>
 
 
 </div>
-
 </div>
 
 
 <script>
 
-
-/* =========================================================
-   APP TOUCH / CLICK ANIMATION
-========================================================= */
+/* ================= LINK CLICK ANIMATION ================= */
 
 document
 .querySelectorAll(".social-box")
 .forEach(function(card){
 
-    card.addEventListener(
-        "click",
-        function(){
+    card.addEventListener("click",function(e){
 
-            card.classList.remove(
-                "clicked"
-            );
-
-            void card.offsetWidth;
-
-            card.classList.add(
-                "clicked"
-            );
-
+        if(e.target.closest(".open")){
+            return;
         }
-    );
+
+        const button =
+            card.querySelector(".open");
+
+        if(button){
+            button.click();
+        }
+
+    });
 
 });
 
 
-/* =========================================================
-   SHARE THIS PAGE
-========================================================= */
+/* ================= SHARE ================= */
 
 const shareButton =
-    document.getElementById(
-        "shareButton"
-    );
-
+    document.getElementById("shareButton");
 
 const shareStatus =
-    document.getElementById(
-        "shareStatus"
-    );
+    document.getElementById("shareStatus");
 
 
 shareButton.addEventListener(
     "click",
     async function(){
 
-        const pageData = {
+        const shareData = {
 
-            title:
-                "BEYON info@",
+            title:"BEYON info@",
 
-            text:
-                "Connect with BEYON info@",
+            text:"Connect with BEYON info@",
 
-            url:
-                window.location.href
+            url:window.location.href
 
         };
 
 
         try{
 
-            if(
-                navigator.share
-            ){
+            if(navigator.share){
 
                 await navigator.share(
-                    pageData
+                    shareData
                 );
 
                 shareStatus.textContent =
@@ -1772,20 +1197,16 @@ shareButton.addEventListener(
 
             }
 
-
-            else if(
-                navigator.clipboard
-            ){
+            else if(navigator.clipboard){
 
                 await navigator.clipboard.writeText(
                     window.location.href
                 );
 
                 shareStatus.textContent =
-                    "Page link copied. Send it to anyone.";
+                    "Link copied! Send it to anyone.";
 
             }
-
 
             else{
 
@@ -1798,16 +1219,14 @@ shareButton.addEventListener(
 
         }
 
-
         catch(error){
 
             if(
-                error.name !==
-                "AbortError"
+                error.name !== "AbortError"
             ){
 
                 shareStatus.textContent =
-                    "Sharing was cancelled.";
+                    "Sharing cancelled.";
 
             }
 
@@ -1818,7 +1237,5 @@ shareButton.addEventListener(
 
 </script>
 
-
 </body>
-
 </html>
